@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "143979645677",
+    "project_id": "pentarapan-putra",
+    "storage_bucket": "pentarapan-putra.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143979645677:android:9b583667605865018a1ae4",
+        "android_client_info": {
+          "package_name": "com.pentarapanputra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143979645677-kvq28342tfke6bkbn479dtrkt0rnkje8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZeFrJAu4ckHQ83b6cIQYQCUirplgUWhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143979645677-kvq28342tfke6bkbn479dtrkt0rnkje8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
