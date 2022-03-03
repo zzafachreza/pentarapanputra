@@ -139,7 +139,7 @@ export default function Masuk({ navigation, route }) {
           .post('https://pentarapanputra.zavalabs.com/api/absen_add.php', kirim)
           .then(x => {
             setLoading(false);
-            alert('Absensi Masuk Berhasil Di Kirim');
+            alert('Absensi Pulang Berhasil Di Kirim');
             console.log('respose server', x.data);
             navigation.navigate('MainApp');
           });
