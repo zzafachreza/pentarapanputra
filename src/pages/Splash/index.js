@@ -59,7 +59,7 @@ export default function Splash({ navigation }) {
     const unsubscribe = getData('user').then(res => {
       // console.log(res);
       if (!res) {
-        // console.log('beum login');
+        console.log('beum login');
 
         setTimeout(() => {
           navigation.replace('Login');

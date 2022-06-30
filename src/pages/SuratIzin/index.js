@@ -169,7 +169,7 @@ export default function SuratIzin({ navigation }) {
             <MyButton
               onPress={onPress2}
               title="GALLERY"
-              colorText={colors.black}
+              colorText={colors.white}
               warna={colors.secondary}
             />
           </View>
@@ -306,10 +306,10 @@ export default function SuratIzin({ navigation }) {
         <MyButton
           onPress={kirim}
           title="SIMPAN SURAT IZIN"
-          iconColor={colors.black}
+          iconColor={colors.white}
           Icons="mail-outline"
-          warna={colors.tertiary}
-          colorText={colors.black}
+          warna={colors.primary}
+          colorText={colors.white}
         />
         <MyGap jarak={20} />
       </ScrollView>

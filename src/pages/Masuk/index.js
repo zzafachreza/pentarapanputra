@@ -22,7 +22,6 @@ import GetLocation from 'react-native-get-location';
 import { getDistance, convertDistance } from 'geolib';
 export default function Masuk({ navigation, route }) {
   const items = route.params.jenis;
-  console.log('hasil sebelumya', items);
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
   const [loading, setLoading] = useState(true);
@@ -46,7 +45,7 @@ export default function Masuk({ navigation, route }) {
 
   const options = {
     includeBase64: true,
-    quality: 0.5,
+    quality: 0.4,
     maxWidth: 300,
     maxHeight: 300,
   };
@@ -94,7 +93,7 @@ export default function Masuk({ navigation, route }) {
         timeout: 15000,
       })
         .then(location => {
-          console.log(location);
+          console.log('lokasi', location);
           setLatitude(location.latitude);
 
           setLongitude(location.longitude);
@@ -119,7 +118,7 @@ export default function Masuk({ navigation, route }) {
         .catch(error => {
           setLoading(false);
           const { code, message } = error;
-          console.warn(code, message);
+          console.warn('error', code, message);
         });
     });
   }, []);
@@ -167,7 +166,7 @@ export default function Masuk({ navigation, route }) {
             style={{
               fontFamily: fonts.secondary[600],
               color: colors.black,
-              fontSize: windowWidth / 20,
+              fontSize: windowWidth / 30,
             }}>
             Latitude
           </Text>
@@ -186,7 +185,7 @@ export default function Masuk({ navigation, route }) {
             style={{
               fontFamily: fonts.secondary[600],
               color: colors.black,
-              fontSize: windowWidth / 20,
+              fontSize: windowWidth / 30,
             }}>
             Longitude
           </Text>
@@ -214,8 +213,8 @@ export default function Masuk({ navigation, route }) {
 
         <Text
           style={{
-            fontFamily: fonts.secondary[800],
-            fontSize: windowWidth / 25,
+            fontFamily: fonts.secondary[600],
+            fontSize: windowWidth / 30,
             color: colors.zavalabs
           }}>{items} - {jarak} Meter</Text>
 
@@ -225,7 +224,7 @@ export default function Masuk({ navigation, route }) {
         <Text
           style={{
             fontFamily: fonts.secondary[600],
-            fontSize: windowWidth / 20,
+            fontSize: windowWidth / 25,
             marginBottom: 5,
           }}>
           ABSEN MASUK
@@ -237,8 +236,8 @@ export default function Masuk({ navigation, route }) {
           <View
             style={{
               backgroundColor: colors.white,
-              width: 300,
-              height: 400,
+              width: 250,
+              height: 350,
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 10,
@@ -251,7 +250,7 @@ export default function Masuk({ navigation, route }) {
                     ? 'https://zavalabs.com/nogambar.jpg'
                     : data.foto,
               }}
-              style={{ width: 300, height: 400 }}
+              style={{ width: 250, height: 350 }}
             />
           </View>
           <MyGap jarak={10} />

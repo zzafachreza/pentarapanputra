@@ -45,7 +45,7 @@ export default function Masuk({ navigation, route }) {
   const [jarak, setJarak] = useState(0);
   const options = {
     includeBase64: true,
-    quality: 0.5,
+    quality: 0.4,
     maxWidth: 300,
     maxHeight: 300,
   };
@@ -140,7 +140,7 @@ export default function Masuk({ navigation, route }) {
           .then(x => {
             setLoading(false);
             alert('Absensi Pulang Berhasil Di Kirim');
-            console.log('respose server', x.data);
+            console.error('respose server', x.data);
             navigation.navigate('MainApp');
           });
       }
@@ -159,7 +159,7 @@ export default function Masuk({ navigation, route }) {
             style={{
               fontFamily: fonts.secondary[600],
               color: colors.black,
-              fontSize: windowWidth / 20,
+              fontSize: windowWidth / 30,
             }}>
             Latitude
           </Text>
@@ -178,7 +178,7 @@ export default function Masuk({ navigation, route }) {
             style={{
               fontFamily: fonts.secondary[600],
               color: colors.black,
-              fontSize: windowWidth / 20,
+              fontSize: windowWidth / 30,
             }}>
             Longitude
           </Text>
@@ -203,8 +203,8 @@ export default function Masuk({ navigation, route }) {
 
         <Text
           style={{
-            fontFamily: fonts.secondary[800],
-            fontSize: windowWidth / 25,
+            fontFamily: fonts.secondary[600],
+            fontSize: windowWidth / 30,
             color: colors.zavalabs
           }}>{items} - {jarak} Meter</Text>
 
@@ -215,7 +215,7 @@ export default function Masuk({ navigation, route }) {
         <Text
           style={{
             fontFamily: fonts.secondary[600],
-            fontSize: windowWidth / 15,
+            fontSize: windowWidth / 25,
             marginBottom: 5,
           }}>
           ABSEN PULANG
@@ -225,8 +225,8 @@ export default function Masuk({ navigation, route }) {
           <View
             style={{
               backgroundColor: colors.white,
-              width: 300,
-              height: 400,
+              width: 250,
+              height: 350,
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 10,
@@ -239,7 +239,7 @@ export default function Masuk({ navigation, route }) {
                     ? 'https://zavalabs.com/nogambar.jpg'
                     : data.foto,
               }}
-              style={{ width: 300, height: 400 }}
+              style={{ width: 250, height: 350 }}
             />
           </View>
           <MyGap jarak={10} />

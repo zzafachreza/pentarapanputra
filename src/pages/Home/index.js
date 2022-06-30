@@ -4,28 +4,21 @@ import {
   Text,
   Dimensions,
   ImageBackground,
-  SafeAreaView,
   Image,
-  TouchableWithoutFeedback,
   ScrollView,
   TouchableOpacity,
-  TouchableNativeFeedback,
-  Linking,
-  StatusBar,
+  StyleSheet,
+  SafeAreaView
 } from 'react-native';
 import { colors } from '../../utils/colors';
 import { fonts } from '../../utils/fonts';
 import { storeData, getData } from '../../utils/localStorage';
 import { Icon } from 'react-native-elements';
 import MyCarouser from '../../components/MyCarouser';
-import MyTerbaik from '../../components/MyTerbaik';
 import axios from 'axios';
 import messaging from '@react-native-firebase/messaging';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
-import MyTerbaik2 from '../../components/MyTerbaik2';
-import MyTerbaik3 from '../../components/MyTerbaik3';
-import MyDashboard from '../../components/MyDashboard';
 
 export default function Home({ navigation }) {
   const [user, setUser] = useState([]);
@@ -44,24 +37,6 @@ export default function Home({ navigation }) {
       // console.log(res);
       // alert('email' + res.email + ' dan password ' + res.password);
 
-      axios
-        .post('https://zavalabs.com/sigadisbekasi/api/point.php', {
-          id_member: res.id,
-        })
-        .then(respoint => {
-          setPoint(respoint.data);
-          console.log('get apoint', respoint.data);
-        });
-
-      axios
-        .post('https://zavalabs.com/sigadisbekasi/api/get_member.php', {
-          email: res.email,
-          password: res.password,
-        })
-        .then(rese => {
-          setUser(rese.data);
-          storeData('user', rese.data);
-        });
     });
   });
 
@@ -78,14 +53,6 @@ export default function Home({ navigation }) {
       console.log(res);
       setUser(res);
 
-      axios
-        .post('https://pentarapanputra.zavalabs.com/api/point.php', {
-          id_member: res.id,
-        })
-        .then(respoint => {
-          setPoint(respoint.data);
-          console.log('get apoint', respoint.data);
-        });
 
       getData('token').then(res => {
         console.log('data token,', res);
@@ -102,22 +69,8 @@ export default function Home({ navigation }) {
         console.log('update token', res);
       });
   }, []);
-
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
-  const ratio = 192 / 108;
-  const _renderItem = ({ item, index }) => {
-    return (
-      <Image
-        resizeMode="contain"
-        source={{ uri: item.image }}
-        style={{
-          width: windowWidth,
-          height: Math.round((windowWidth * 9) / 16),
-        }}
-      />
-    );
-  };
 
   const DataKategori = ({
     icon,
@@ -173,17 +126,12 @@ export default function Home({ navigation }) {
   };
 
   return (
-    <ImageBackground
+    <SafeAreaView
       // source={require('../../assets/back.jpeg')}
       style={{
         flex: 1,
         backgroundColor: colors.white,
       }}>
-      {/* <StatusBar
-        barStyle="dark-content"
-        translucent={true}
-        backgroundColor={'transparent'}
-      /> */}
 
       <ScrollView>
         {/* bagian untuk point dan redeem */}
@@ -192,17 +140,17 @@ export default function Home({ navigation }) {
           style={{
             height: windowHeight / 9,
             padding: 10,
-            marginBottom: 20,
+            marginBottom: 10,
             backgroundColor: colors.primary,
             flexDirection: 'row',
             // borderBottomLeftRadius: 10,
             // borderBottomRightRadius: 10,
           }}>
-          <View style={{ flex: 1, paddingTop: 10, flexDirection: 'row' }}>
+          <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={{ paddingLeft: 10 }}>
               <Text
                 style={{
-                  fontSize: windowWidth / 30,
+                  fontSize: windowWidth / 32,
                   color: colors.white,
                   fontFamily: fonts.secondary[400],
                 }}>
@@ -210,7 +158,7 @@ export default function Home({ navigation }) {
               </Text>
               <Text
                 style={{
-                  fontSize: windowWidth / 25,
+                  fontSize: windowWidth / 32,
                   color: colors.white,
                   fontFamily: fonts.secondary[600],
                 }}>
@@ -218,7 +166,7 @@ export default function Home({ navigation }) {
               </Text>
               <Text
                 style={{
-                  fontSize: windowWidth / 25,
+                  fontSize: windowWidth / 32,
                   color: colors.white,
                   fontFamily: fonts.secondary[600],
                 }}>
@@ -234,7 +182,7 @@ export default function Home({ navigation }) {
             }}>
             <Image
               source={require('../../assets/logo.png')}
-              style={{ width: 50, resizeMode: 'contain' }}
+              style={{ width: 40, resizeMode: 'contain' }}
             />
           </View>
         </View>
@@ -246,7 +194,7 @@ export default function Home({ navigation }) {
         <View
           style={{
             padding: 10,
-            marginTop: 20,
+            marginTop: 5,
           }}>
           <View
             style={{
@@ -274,7 +222,7 @@ export default function Home({ navigation }) {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-around',
-              marginTop: 15,
+              marginTop: 10,
             }}>
             <DataKategori
               warna="#FDC24F"
@@ -295,6 +243,8 @@ export default function Home({ navigation }) {
           {/*  */}
         </View>
       </ScrollView>
-    </ImageBackground>
-  );
+    </SafeAreaView>
+  )
 }
+
+const styles = StyleSheet.create({})

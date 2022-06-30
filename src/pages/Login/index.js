@@ -11,16 +11,13 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { colors } from '../../utils/colors';
-import { fonts } from '../../utils/fonts';
+import { fonts, windowWidth } from '../../utils/fonts';
 import { MyInput, MyGap, MyButton } from '../../components';
 import LottieView from 'lottie-react-native';
 import axios from 'axios';
 import { storeData, getData } from '../../utils/localStorage';
 import { showMessage } from 'react-native-flash-message';
-
 export default function Login({ navigation }) {
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
   const [loading, setLoading] = useState(false);
   const [valid, setValid] = useState(true);
 
@@ -30,14 +27,6 @@ export default function Login({ navigation }) {
     password: '',
   });
 
-  useEffect(() => {
-    getData('token').then(res => {
-      console.log('data token,', res);
-      setToken(res.token);
-    });
-  }, []);
-
-  // login ok
   const masuk = () => {
     if (data.nip.length === 0 && data.password.length === 0) {
       showMessage({
@@ -82,8 +71,13 @@ export default function Login({ navigation }) {
       }, 1200);
     }
   };
+
+
   return (
-    <ImageBackground style={styles.page}>
+    <SafeAreaView style={{
+      flex: 1,
+      padding: 10,
+    }}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{
@@ -104,7 +98,7 @@ export default function Login({ navigation }) {
             source={require('../../assets/logo.png')}
             style={{
               resizeMode: 'contain',
-              aspectRatio: 0.8,
+              aspectRatio: 0.4,
             }}
           />
         </View>
@@ -164,18 +158,8 @@ export default function Login({ navigation }) {
           style={{ backgroundColor: colors.primary }}
         />
       )}
-    </ImageBackground>
-  );
+    </SafeAreaView>
+  )
 }
 
-const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-    backgroundColor: colors.white,
-    padding: 10,
-  },
-  image: {
-    aspectRatio: 1.5,
-    resizeMode: 'contain',
-  },
-});
+const styles = StyleSheet.create({})
